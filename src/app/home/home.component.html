@@ -1,0 +1,25 @@
+<mat-toolbar align="end">
+    <span class="flex-expand"></span>
+    <button mat-raised-button (click)="addUser()">Add employee</button>
+    <button mat-raised-button (click)="changeForm()">Edit Mode</button>
+</mat-toolbar>
+
+<div class="container">
+    <div fxLayout="row wrap" fxLayoutGap="10px grid" >
+        <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%" fxFlexAlign="stretch" *ngFor="let item of responseData">
+    <mat-card  appMaterialElevation>
+        <img mat-card-image [src]='item.avatar'>
+        <mat-card-content>
+            <h2 style="text-align: center;">{{item.first_name}} {{item.last_name}}</h2>
+            <p style="text-align: center; font-style:italic;">{{item.email}}</p>
+        </mat-card-content>
+        <div *ngIf="editFormCheck">
+            <mat-card-actions align="end">
+                <button mat-icon-button (click)="updateUser(item)"><mat-icon>edit</mat-icon></button>
+                <button mat-icon-button (click)="deleteUser(item.id)"><mat-icon>delete</mat-icon></button>
+            </mat-card-actions>
+            </div>
+    </mat-card>
+        </div>
+        </div>
+</div>
